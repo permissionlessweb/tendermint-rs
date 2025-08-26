@@ -48,7 +48,7 @@ pub mod request {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
@@ -57,7 +57,7 @@ pub struct RequestEcho {
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct RequestFlush {}
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestInfo {
     #[prost(string, tag = "1")]
     pub version: ::prost::alloc::string::String,
@@ -85,7 +85,7 @@ pub struct RequestInitChain {
     pub initial_height: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestQuery {
     #[prost(bytes = "bytes", tag = "1")]
     pub data: ::prost::bytes::Bytes,
@@ -97,7 +97,7 @@ pub struct RequestQuery {
     pub prove: bool,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestCheckTx {
     #[prost(bytes = "bytes", tag = "1")]
     pub tx: ::prost::bytes::Bytes,
@@ -113,7 +113,7 @@ pub struct RequestCommit {}
 pub struct RequestListSnapshots {}
 /// offers a snapshot to the application
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestOfferSnapshot {
     /// snapshot offered by peers
     #[prost(message, optional, tag = "1")]
@@ -135,7 +135,7 @@ pub struct RequestLoadSnapshotChunk {
 }
 /// Applies a snapshot chunk
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestApplySnapshotChunk {
     #[prost(uint32, tag = "1")]
     pub index: u32,
@@ -217,7 +217,7 @@ pub struct RequestExtendVote {
 }
 /// Verify the vote extension
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RequestVerifyVoteExtension {
     /// the hash of the block that this received vote corresponds to
     #[prost(bytes = "bytes", tag = "1")]
@@ -304,13 +304,13 @@ pub mod response {
 }
 /// nondeterministic
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseException {
     #[prost(string, tag = "1")]
     pub error: ::prost::alloc::string::String,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseEcho {
     #[prost(string, tag = "1")]
     pub message: ::prost::alloc::string::String,
@@ -319,7 +319,7 @@ pub struct ResponseEcho {
 #[derive(Clone, Copy, PartialEq, Eq, Hash, ::prost::Message)]
 pub struct ResponseFlush {}
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseInfo {
     #[prost(string, tag = "1")]
     #[serde(default)]
@@ -473,13 +473,13 @@ pub mod response_offer_snapshot {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseLoadSnapshotChunk {
     #[prost(bytes = "bytes", tag = "1")]
     pub chunk: ::prost::bytes::Bytes,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseApplySnapshotChunk {
     #[prost(enumeration = "response_apply_snapshot_chunk::Result", tag = "1")]
     pub result: i32,
@@ -549,7 +549,7 @@ pub mod response_apply_snapshot_chunk {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponsePrepareProposal {
     #[prost(bytes = "bytes", repeated, tag = "1")]
     pub txs: ::prost::alloc::vec::Vec<::prost::bytes::Bytes>,
@@ -604,7 +604,7 @@ pub mod response_process_proposal {
     }
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ResponseExtendVote {
     #[prost(bytes = "bytes", tag = "1")]
     pub vote_extension: ::prost::bytes::Bytes,
@@ -718,7 +718,7 @@ pub struct Event {
 }
 /// EventAttribute is a single key-value pair, associated with an event.
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventAttribute {
     #[prost(string, tag = "1")]
     pub key: ::prost::alloc::string::String,
@@ -770,7 +770,7 @@ pub struct TxResult {
     pub result: ::core::option::Option<ExecTxResult>,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Validator {
     /// The first 20 bytes of SHA256(public key)
     #[prost(bytes = "bytes", tag = "1")]
@@ -782,7 +782,7 @@ pub struct Validator {
     pub power: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ValidatorUpdate {
     #[prost(message, optional, tag = "1")]
     pub pub_key: ::core::option::Option<super::crypto::PublicKey>,
@@ -790,7 +790,7 @@ pub struct ValidatorUpdate {
     pub power: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VoteInfo {
     #[prost(message, optional, tag = "1")]
     pub validator: ::core::option::Option<Validator>,
@@ -798,7 +798,7 @@ pub struct VoteInfo {
     pub block_id_flag: i32,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ExtendedVoteInfo {
     /// The validator that sent the vote.
     #[prost(message, optional, tag = "1")]
@@ -814,7 +814,7 @@ pub struct ExtendedVoteInfo {
     pub block_id_flag: i32,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Misbehavior {
     #[prost(enumeration = "MisbehaviorType", tag = "1")]
     pub r#type: i32,
@@ -834,7 +834,7 @@ pub struct Misbehavior {
     pub total_voting_power: i64,
 }
 #[derive(::serde::Deserialize, ::serde::Serialize)]
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Snapshot {
     /// The height at which the snapshot was taken
     #[prost(uint64, tag = "1")]

@@ -16,3 +16,4 @@ thiserror       = { version = "1.0" }
 prost-build     = { version = "0.14.1" }
 tonic-build     = { version = "0.14.1" }
 tonic-prost-build  = { version = "0.14.1" }
+regex            = { version = "1" }

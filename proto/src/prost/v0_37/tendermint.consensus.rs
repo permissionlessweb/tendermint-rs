@@ -17,7 +17,7 @@ pub struct NewRoundStep {
 /// NewValidBlock is sent when a validator observes a valid block B in some round r,
 /// i.e., there is a Proposal for block B and 2/3+ prevotes for the block B in the round r.
 /// In case the block is also committed, then IsCommit flag is set to true.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NewValidBlock {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -31,13 +31,13 @@ pub struct NewValidBlock {
     pub is_commit: bool,
 }
 /// Proposal is sent when a new block is proposed.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Proposal {
     #[prost(message, optional, tag = "1")]
     pub proposal: ::core::option::Option<super::types::Proposal>,
 }
 /// ProposalPOL is sent when a previous proposal is re-proposed.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProposalPol {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -47,7 +47,7 @@ pub struct ProposalPol {
     pub proposal_pol: ::core::option::Option<super::libs::bits::BitArray>,
 }
 /// BlockPart is sent when gossipping a piece of the proposed block.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BlockPart {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -57,7 +57,7 @@ pub struct BlockPart {
     pub part: ::core::option::Option<super::types::Part>,
 }
 /// Vote is sent when voting for a proposal (or lack thereof).
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Vote {
     #[prost(message, optional, tag = "1")]
     pub vote: ::core::option::Option<super::types::Vote>,
@@ -75,7 +75,7 @@ pub struct HasVote {
     pub index: i32,
 }
 /// VoteSetMaj23 is sent to indicate that a given BlockID has seen +2/3 votes.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VoteSetMaj23 {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -87,7 +87,7 @@ pub struct VoteSetMaj23 {
     pub block_id: ::core::option::Option<super::types::BlockId>,
 }
 /// VoteSetBits is sent to communicate the bit-array of votes seen for the BlockID.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VoteSetBits {
     #[prost(int64, tag = "1")]
     pub height: i64,
@@ -100,14 +100,14 @@ pub struct VoteSetBits {
     #[prost(message, optional, tag = "5")]
     pub votes: ::core::option::Option<super::libs::bits::BitArray>,
 }
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Message {
     #[prost(oneof = "message::Sum", tags = "1, 2, 3, 4, 5, 6, 7, 8, 9")]
     pub sum: ::core::option::Option<message::Sum>,
 }
 /// Nested message and enum types in `Message`.
 pub mod message {
-    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Sum {
         #[prost(message, tag = "1")]
         NewRoundStep(super::NewRoundStep),
@@ -130,7 +130,7 @@ pub mod message {
     }
 }
 /// MsgInfo are msgs from the reactor which may update the state
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MsgInfo {
     #[prost(message, optional, tag = "1")]
     pub msg: ::core::option::Option<Message>,
@@ -156,14 +156,14 @@ pub struct EndHeight {
     #[prost(int64, tag = "1")]
     pub height: i64,
 }
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WalMessage {
     #[prost(oneof = "wal_message::Sum", tags = "1, 2, 3, 4")]
     pub sum: ::core::option::Option<wal_message::Sum>,
 }
 /// Nested message and enum types in `WALMessage`.
 pub mod wal_message {
-    #[derive(Clone, PartialEq, Eq, Hash, ::prost::Oneof)]
+    #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Sum {
         #[prost(message, tag = "1")]
         EventDataRoundState(super::super::types::EventDataRoundState),
@@ -176,7 +176,7 @@ pub mod wal_message {
     }
 }
 /// TimedWALMessage wraps WALMessage and adds Time for debugging purposes.
-#[derive(Clone, PartialEq, Eq, Hash, ::prost::Message)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct TimedWalMessage {
     #[prost(message, optional, tag = "1")]
     pub time: ::core::option::Option<crate::google::protobuf::Timestamp>,
