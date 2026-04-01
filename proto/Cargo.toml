@@ -36,7 +36,7 @@ flex-error = { version = "0.4.4", default-features = false }
 tonic = { version = "0.14.1", optional = true }
 
 ## Optional: enabled by the `json-schema` feature
-schemars = { version = "0.8", optional = true }
+schemars = { version = "0.8.22", optional = true }
 
 ## Optional: enabled by the `borsh` feature
 ## For borsh encode or decode, needs to track `anchor-lang` and `near-sdk-rs` borsh version
