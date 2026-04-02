@@ -164,7 +164,7 @@ mod tests {
                     assert_eq!(host, "35.192.61.41");
                     assert_eq!(port, 26656);
                 },
-                other => panic!("unexpected address type: {other:?}"),
+                other => self::panic!("unexpected address type: {other:?}"),
             }
         }
     }
@@ -186,7 +186,7 @@ mod tests {
                     assert_eq!(host, "35.192.61.41");
                     assert_eq!(*port, 26656);
                 },
-                other => panic!("unexpected address type: {other:?}"),
+                other => self::panic!("unexpected address type: {other:?}"),
             }
         }
     }
@@ -198,7 +198,7 @@ mod tests {
             Address::Unix { path } => {
                 assert_eq!(path, "/tmp/node.sock");
             },
-            other => panic!("unexpected address type: {other:?}"),
+            other => self::panic!("unexpected address type: {other:?}"),
         }
     }
 
@@ -225,7 +225,7 @@ mod tests {
                     assert_eq!(host, "[2001:0:3238:dfe1:63::fefb]");
                     assert_eq!(*port, 26656);
                 },
-                other => panic!("unexpected address type: {other:?}"),
+                other => self::panic!("unexpected address type: {other:?}"),
             }
         }
     }

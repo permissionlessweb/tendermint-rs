@@ -2,6 +2,7 @@
 
 #![cfg_attr(not(feature = "std"), no_std)]
 #![deny(warnings, trivial_casts, trivial_numeric_casts, unused_import_braces)]
+#![allow(deprecated)]
 #![allow(clippy::large_enum_variant)]
 #![forbid(unsafe_code)]
 
