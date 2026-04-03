@@ -1,12 +1,12 @@
 [package]
 name       = "tendermint-light-client-cli"
-version    = "0.40.4"
-edition    = "2021"
-license    = "Apache-2.0"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
 readme     = "README.md"
 keywords   = ["blockchain", "bft", "consensus", "cosmos", "tendermint"]
 categories = ["cryptography::cryptocurrencies", "network-programming"]
-repository = "https://github.com/informalsystems/tendermint-rs"
+repository.workspace = true
 authors    = [
   "Informal Systems <hello@informal.systems>",
 ]
@@ -23,15 +23,15 @@ all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-tendermint = { version = "0.40.4", path = "../tendermint" }
-tendermint-rpc = { version = "0.40.4", path = "../rpc", features = ["http-client"] }
-tendermint-light-client = { version = "0.40.4", path = "../light-client" }
-tendermint-light-client-detector = { version = "0.40.4", path = "../light-client-detector" }
+tendermint = { workspace = true, features = ["std", "rust-crypto"] }
+tendermint-rpc = { workspace = true, default-features = true }
+tendermint-light-client = { workspace = true, default-features = true }
+tendermint-light-client-detector = { workspace = true }
 
-clap = { version = "4.1.8", features = ["derive"] }
-color-eyre = "0.6.2"
-futures = "0.3.27"
-serde_json = "1.0.94"
-tokio = { version = "1.26.0", features = ["full"] }
-tracing = "0.1.37"
-tracing-subscriber = { version = "0.3.16", features = ["env-filter"] }
+clap = { workspace = true }
+color-eyre = { workspace = true }
+futures = { workspace = true, features = ["std", "async-await", "executor"] }
+serde_json = { workspace = true, features = ["std"] }
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true, features = ["std"] }
+tracing-subscriber = { workspace = true, features = ["default", "env-filter"] }

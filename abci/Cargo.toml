@@ -1,13 +1,13 @@
 [package]
 name        = "tendermint-abci"
-version     = "0.40.4"
+version.workspace     = true
 authors     = ["Informal Systems <hello@informal.systems>"]
-edition     = "2021"
-license     = "Apache-2.0"
+edition.workspace     = true
+license.workspace     = true
 readme      = "README.md"
 categories  = ["cryptography::cryptocurrencies", "network-programming"]
 keywords    = ["abci", "blockchain", "bft", "consensus", "tendermint"]
-repository  = "https://github.com/informalsystems/tendermint-rs"
+repository.workspace  = true
 description = """
     tendermint-abci provides a simple framework with which to build low-level
     applications on top of Tendermint.
@@ -31,10 +31,10 @@ binary = [
 ]
 
 [dependencies]
-bytes = { version = "1.0", default-features = false }
-prost = { version = "0.14.1", default-features = false }
-tendermint-proto = { version = "0.40.4", default-features = false, path = "../proto" }
-tracing = { version = "0.1", default-features = false }
-flex-error = { version = "0.4.4", default-features = false }
-structopt = { version = "0.3", optional = true, default-features = false }
-tracing-subscriber = { version = "0.3", optional = true, default-features = false }
+bytes = { workspace = true }
+prost = { workspace = true }
+tendermint-proto = { workspace = true }
+tracing = { workspace = true }
+flex-error = { workspace = true }
+structopt = { workspace = true, optional = true }
+tracing-subscriber = { workspace = true, optional = true }

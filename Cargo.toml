@@ -24,6 +24,104 @@ exclude = [
     "tools/no-std-check"
 ]
 
+[workspace.package]
+version    = "0.40.4"
+edition    = "2021"
+license    = "Apache-2.0"
+repository = "https://github.com/informalsystems/tendermint-rs"
+
+[workspace.dependencies]
+# Internal crates
+tendermint                       = { version = "0.40.4", path = "tendermint", default-features = false }
+tendermint-abci                  = { version = "0.40.4", path = "abci", default-features = false }
+tendermint-config                = { version = "0.40.4", path = "config", default-features = false }
+tendermint-light-client          = { version = "0.40.4", path = "light-client", default-features = false }
+tendermint-light-client-detector = { version = "0.40.4", path = "light-client-detector", default-features = false }
+tendermint-light-client-verifier = { version = "0.40.4", path = "light-client-verifier", default-features = false }
+tendermint-p2p                   = { version = "0.40.4", path = "p2p", default-features = false }
+tendermint-pbt-gen               = { version = "0.40.4", path = "pbt-gen", default-features = false }
+tendermint-proto                 = { version = "0.40.4", path = "proto", default-features = false }
+tendermint-rpc                   = { version = "0.40.4", path = "rpc", default-features = false }
+tendermint-std-ext               = { version = "0.40.4", path = "std-ext", default-features = false }
+tendermint-testgen               = { version = "0.40.4", path = "testgen", default-features = false }
+
+# External dependencies
+aead                   = { version = "0.5", default-features = false }
+async-trait            = { version = "0.1", default-features = false }
+async-tungstenite      = { version = "0.24", default-features = false, features = ["tokio-runtime", "tokio-rustls-native-certs"] }
+borsh                  = { version = "1", default-features = false, features = ["derive"] }
+bytes                  = { version = "1.0", default-features = false }
+chacha20poly1305       = { version = "0.10", default-features = false, features = ["reduced-round"] }
+clap                   = { version = "4.1.8", features = ["derive"] }
+color-eyre             = "0.6.2"
+console_error_panic_hook = { version = "0.1.6", default-features = false }
+contracts              = { version = "0.6.2", default-features = false }
+crossbeam-channel      = { version = "0.5.11", default-features = false, features = ["std"] }
+curve25519-dalek-ng    = { version = "4", default-features = false }
+derive_more            = { version = "0.99.5", default-features = false, features = ["display"] }
+digest                 = { version = "0.10", default-features = false }
+ed25519                = { version = "2", default-features = false, features = ["alloc"] }
+ed25519-consensus      = { version = "2", default-features = false }
+eyre                   = { version = "0.6", default-features = false }
+flex-error             = { version = "0.4.4", default-features = false }
+flume                  = { version = "0.11", default-features = false }
+futures                = { version = "0.3", default-features = false }
+getrandom              = { version = "0.2", default-features = false, features = ["js"] }
+gumdrop                = { version = "0.8.0", default-features = false }
+hkdf                   = { version = "0.12.3", default-features = false }
+http                   = { version = "1", default-features = false, features = ["std"] }
+js-sys                 = { version = "=0.3.70", default-features = false }
+k256                   = { version = "0.13", default-features = false }
+lazy_static            = { version = "1.4.0", default-features = false }
+merlin                 = { version = "3", default-features = false }
+num-traits             = { version = "0.2", default-features = false }
+once_cell              = { version = "1.3", default-features = false }
+parity-scale-codec     = { version = "3.0.0", default-features = false, features = ["full"] }
+peg                    = { version = "0.8", default-features = false }
+pin-project            = { version = "1.0.1", default-features = false }
+pretty_assertions      = "1.3.0"
+proptest               = { version = "0.10.1", default-features = false, features = ["std"] }
+prost                  = { version = "0.14.3", default-features = false }
+prost-derive           = { version = "0.14", default-features = false }
+rand                   = { version = "0.8", default-features = false }
+rand_core              = { version = "0.6", default-features = false, features = ["std"] }
+readwrite              = { version = "0.2.0", default-features = false }
+regex                  = "1.7.3"
+reqwest                = { version = "0.11.20", default-features = false, features = ["rustls-tls-native-roots"] }
+ripemd                 = { version = "0.1.3", default-features = false }
+scale-info             = { version = "2.1.2", default-features = false, features = ["derive"] }
+schemars               = "0.8.22"
+semver                 = { version = "1.0", default-features = false }
+serde                  = { version = "1", default-features = false, features = ["derive"] }
+serde_bytes            = { version = "0.11", default-features = false }
+serde_cbor             = { version = "0.11.1", default-features = false, features = ["alloc", "std"] }
+serde_derive           = { version = "1", default-features = false }
+serde_json             = { version = "1", default-features = false }
+serde-wasm-bindgen     = { version = "0.6.5", default-features = false }
+sha2                   = { version = "0.10", default-features = false }
+signature              = { version = "2", default-features = false }
+simple-error           = { version = "0.3.0", default-features = false }
+sled                   = { version = "0.34.3", default-features = false }
+static_assertions      = { version = "1.1.0", default-features = false }
+structopt              = { version = "0.3", default-features = false }
+subtle                 = { version = "2", default-features = false }
+subtle-encoding        = { version = "0.5", default-features = false }
+tempfile               = { version = "3.1.0", default-features = false }
+thiserror              = { version = "1", default-features = false }
+time                   = { version = "0.3", default-features = false }
+tokio                  = { version = "1.0", default-features = false }
+tokio-test             = { version = "0.4", default-features = false }
+tonic                  = "0.14.5"
+toml                   = "0.8"
+tracing                = { version = "0.1", default-features = false }
+tracing-subscriber     = { version = "0.3", default-features = false }
+url                    = { version = "2.2", default-features = false }
+uuid                   = { version = "1.7", default-features = false }
+walkdir                = { version = "2.3", default-features = false }
+wasm-bindgen           = { version = "0.2.63", default-features = false, features = ["serde-serialize"] }
+wasm-bindgen-test      = { version = "0.3.13", default-features = false }
+zeroize                = { version = "1", default-features = false }
+
 [profile.release.package.tendermint-light-client-js]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"

@@ -1,13 +1,13 @@
 [package]
 name        = "tendermint-pbt-gen"
-version     = "0.40.4"
+version.workspace     = true
 authors     = ["Informal Systems <hello@informal.systems>"]
-edition     = "2021"
-license     = "Apache-2.0"
+edition.workspace     = true
+license.workspace     = true
 readme      = "README.md"
 categories  = ["development-tools"]
 keywords    = ["tendermint", "property-based testing"]
-repository  = "https://github.com/informalsystems/tendermint-rs"
+repository.workspace  = true
 description = """
             An internal crate providing proptest generators used across our
             crates and not depending on any code internal to those crates.
@@ -19,8 +19,8 @@ description = """
 default = ["time"]
 
 [dependencies]
-time = { version = "0.3", default-features = false, optional = true }
-proptest = { version = "0.10.1", default-features = false, features = ["std"] }
+time = { workspace = true, optional = true }
+proptest = { workspace = true }
 
 [dev-dependencies]
-time = { version = "0.3", features = ["macros"] }
+time = { workspace = true, features = ["macros"] }

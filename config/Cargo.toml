@@ -1,13 +1,13 @@
 [package]
 name       = "tendermint-config"
-version    = "0.40.4" # Also update depending crates (rpc, light-node, ..) when bumping this.
-license    = "Apache-2.0"
+version.workspace    = true
+license.workspace    = true
 homepage   = "https://www.tendermint.com/"
-repository = "https://github.com/informalsystems/tendermint-rs/tree/main/tendermint"
+repository.workspace = true
 readme     = "../README.md"
 categories = ["cryptography", "cryptography::cryptocurrencies", "database"]
 keywords   = ["blockchain", "bft", "consensus", "cosmos", "tendermint"]
-edition    = "2021"
+edition.workspace    = true
 
 description = """
     tendermint-config provides functions for loading and validating Tendermint
@@ -24,15 +24,15 @@ all-features = true
 rustdoc-args = ["--cfg", "docsrs"]
 
 [dependencies]
-tendermint = { version = "0.40.4", default-features = false, features = ["rust-crypto"], path = "../tendermint" }
-flex-error = { version = "0.4.4", default-features = false }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-toml = { version = "0.8" }
-url = { version = "2.2" }
+tendermint = { workspace = true, features = ["std", "rust-crypto"] }
+flex-error = { workspace = true }
+serde = { workspace = true, features = ["std"] }
+serde_json = { workspace = true, features = ["std"] }
+toml = { workspace = true }
+url = { workspace = true }
 
 [dev-dependencies]
-pretty_assertions = "1.3.0"
+pretty_assertions = { workspace = true }
 
 [features]
 secp256k1 = ["tendermint/secp256k1"]

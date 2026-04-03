@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tendermint = { path = "../../tendermint", default-features = false }
-tendermint-proto = { path = "../../proto", default-features = false }
+tendermint = { path = "../../tendermint" }
+tendermint-proto = { path = "../../proto" }
 tendermint-light-client-verifier = { path = "../../light-client-verifier", default-features = false }
 
 sp-core = { version = "4.0.0", default-features = false, optional = true }
