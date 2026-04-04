@@ -32,16 +32,16 @@ repository = "https://github.com/informalsystems/tendermint-rs"
 
 [workspace.dependencies]
 # Internal crates
-tendermint                       = { version = "0.40.4", path = "tendermint", default-features = false }
+tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 tendermint-abci                  = { version = "0.40.4", path = "abci", default-features = false }
-tendermint-config                = { version = "0.40.4", path = "config", default-features = false }
-tendermint-light-client          = { version = "0.40.4", path = "light-client", default-features = false }
+tendermint-config = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
+tendermint-light-client = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 tendermint-light-client-detector = { version = "0.40.4", path = "light-client-detector", default-features = false }
 tendermint-light-client-verifier = { version = "0.40.4", path = "light-client-verifier", default-features = false }
 tendermint-p2p                   = { version = "0.40.4", path = "p2p", default-features = false }
 tendermint-pbt-gen               = { version = "0.40.4", path = "pbt-gen", default-features = false }
-tendermint-proto                 = { version = "0.40.4", path = "proto", default-features = false }
-tendermint-rpc                   = { version = "0.40.4", path = "rpc", default-features = false }
+tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
+tendermint-rpc = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "main" }
 tendermint-std-ext               = { version = "0.40.4", path = "std-ext", default-features = false }
 tendermint-testgen               = { version = "0.40.4", path = "testgen", default-features = false }
 
