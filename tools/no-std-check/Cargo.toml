@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-tendermint = { path = "../../tendermint" }
-tendermint-proto = { path = "../../proto" }
-tendermint-light-client-verifier = { path = "../../light-client-verifier", default-features = false }
+tendermint = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-proto = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp" }
+tendermint-light-client-verifier = { git = "https://github.com/permissionlessweb/tendermint-rs", branch = "zk-mvp", default-features = false }
 
 sp-core = { version = "4.0.0", default-features = false, optional = true }
 sp-io = { version = "4.0.0", default-features = false, optional = true }
