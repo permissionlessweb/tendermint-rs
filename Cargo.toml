@@ -32,18 +32,18 @@ repository = "https://github.com/informalsystems/tendermint-rs"
 
 [workspace.dependencies]
 # Internal crates
-tendermint                       = { version = "0.40.4", path = "tendermint", default-features = false }
-tendermint-abci                  = { version = "0.40.4", path = "abci", default-features = false }
-tendermint-config                = { version = "0.40.4", path = "config", default-features = false }
-tendermint-light-client          = { version = "0.40.4", path = "light-client", default-features = false }
-tendermint-light-client-detector = { version = "0.40.4", path = "light-client-detector", default-features = false }
-tendermint-light-client-verifier = { version = "0.40.4", path = "light-client-verifier", default-features = false }
+tendermint = { path = "tendermint" }
+tendermint-abci = { path = "abci" }
+tendermint-config = { path = "config" }
+tendermint-light-client = { path = "light-client" }
+tendermint-light-client-detector = { path = "light-client-detector" }
+tendermint-light-client-verifier = { path = "light-client-verifier" }
 tendermint-p2p                   = { version = "0.40.4", path = "p2p", default-features = false }
 tendermint-pbt-gen               = { version = "0.40.4", path = "pbt-gen", default-features = false }
-tendermint-proto                 = { version = "0.40.4", path = "proto", default-features = false }
-tendermint-rpc                   = { version = "0.40.4", path = "rpc", default-features = false }
+tendermint-proto = { path = "proto" }
+tendermint-rpc = { path = "rpc" }
 tendermint-std-ext               = { version = "0.40.4", path = "std-ext", default-features = false }
-tendermint-testgen               = { version = "0.40.4", path = "testgen", default-features = false }
+tendermint-testgen = { path = "testgen" }
 
 # External dependencies
 aead                   = { version = "0.5", default-features = false }
