@@ -5,10 +5,10 @@ members = [
     "abci",
     "config",
     "light-client",
-    "light-client-verifier",
-    "light-client-detector",
     "light-client-cli",
+    "light-client-detector",
     "light-client-js",
+    "light-client-verifier",
     "p2p",
     "pbt-gen",
     "proto",
@@ -16,13 +16,10 @@ members = [
     "std-ext",
     "tendermint",
     "test",
-    "testgen"
+    "testgen",
 ]
 
-exclude = [
-    "proto-compiler",
-    "tools/no-std-check"
-]
+exclude = ["proto-compiler", "tools/no-std-check"]
 
 [workspace.package]
 version    = "0.40.4"
@@ -93,11 +90,11 @@ scale-info             = { version = "2.1.2", default-features = false, features
 schemars               = "0.8.22"
 semver                 = { version = "1.0", default-features = false }
 serde                  = { version = "1", default-features = false, features = ["derive"] }
+serde-wasm-bindgen     = { version = "0.6.5", default-features = false }
 serde_bytes            = { version = "0.11", default-features = false }
 serde_cbor             = { version = "0.11.1", default-features = false, features = ["alloc", "std"] }
 serde_derive           = { version = "1", default-features = false }
 serde_json             = { version = "1", default-features = false }
-serde-wasm-bindgen     = { version = "0.6.5", default-features = false }
 sha2                   = { version = "0.10", default-features = false }
 signature              = { version = "2", default-features = false }
 simple-error           = { version = "0.3.0", default-features = false }
@@ -111,8 +108,8 @@ thiserror              = { version = "1", default-features = false }
 time                   = { version = "0.3", default-features = false }
 tokio                  = { version = "1.0", default-features = false }
 tokio-test             = { version = "0.4", default-features = false }
-tonic                  = "0.14.5"
 toml                   = "0.8"
+tonic                  = "0.14.5"
 tracing                = { version = "0.1", default-features = false }
 tracing-subscriber     = { version = "0.3", default-features = false }
 url                    = { version = "2.2", default-features = false }
@@ -121,6 +118,17 @@ walkdir                = { version = "2.3", default-features = false }
 wasm-bindgen           = { version = "0.2.63", default-features = false, features = ["serde-serialize"] }
 wasm-bindgen-test      = { version = "0.3.13", default-features = false }
 zeroize                = { version = "1", default-features = false }
+
+[patch.'https://github.com/permissionlessweb/tendermint-rs']
+tendermint = { path = "tendermint" }
+tendermint-abci = { path = "abci" }
+tendermint-config = { path = "config" }
+tendermint-light-client = { path = "light-client" }
+tendermint-light-client-detector = { path = "light-client-detector" }
+tendermint-light-client-verifier = { path = "light-client-verifier" }
+tendermint-proto = { path = "proto" }
+tendermint-rpc = { path = "rpc" }
+tendermint-testgen = { path = "testgen" }
 
 [profile.release.package.tendermint-light-client-js]
 # Tell `rustc` to optimize for small code size.

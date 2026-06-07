@@ -1,13 +1,6 @@
 [workspace]
 resolver = "2"
 
-members = [
-    "abci-test",
-    "kvstore-test",
-    "proto-compiler",
-    "rpc-probe"
-]
+members = ["abci-test", "kvstore-test", "proto-compiler", "rpc-probe"]
 
-exclude = [
-    "no-std-check"
-]
+exclude = ["no-std-check"]
