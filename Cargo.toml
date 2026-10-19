@@ -118,18 +118,6 @@ walkdir                = { version = "2.3", default-features = false }
 wasm-bindgen           = { version = "0.2.63", default-features = false, features = ["serde-serialize"] }
 wasm-bindgen-test      = { version = "0.3.13", default-features = false }
 zeroize                = { version = "1", default-features = false }
-
-[patch.'https://github.com/permissionlessweb/tendermint-rs']
-tendermint = { path = "tendermint" }
-tendermint-abci = { path = "abci" }
-tendermint-config = { path = "config" }
-tendermint-light-client = { path = "light-client" }
-tendermint-light-client-detector = { path = "light-client-detector" }
-tendermint-light-client-verifier = { path = "light-client-verifier" }
-tendermint-proto = { path = "proto" }
-tendermint-rpc = { path = "rpc" }
-tendermint-testgen = { path = "testgen" }
-
 [profile.release.package.tendermint-light-client-js]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
