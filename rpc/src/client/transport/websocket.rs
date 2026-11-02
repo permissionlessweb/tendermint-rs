@@ -1,6 +1,6 @@
 //! WebSocket-based clients for accessing Tendermint RPC functionality.
 
-use alloc::{borrow::Cow, collections::BTreeMap as HashMap, fmt};
+use alloc::{collections::BTreeMap as HashMap, fmt};
 use core::{ops::Add, str::FromStr};
 
 use async_trait::async_trait;
@@ -12,7 +12,7 @@ use async_tungstenite::{
     },
     WebSocketStream,
 };
-use futures::{SinkExt, StreamExt};
+use futures::StreamExt;
 use serde::{Deserialize, Serialize};
 use tokio::time::{Duration, Instant};
 use tracing::{debug, error};
@@ -802,7 +802,7 @@ impl WebSocketClientDriver {
 
     async fn simple_request(&mut self, cmd: SimpleRequestCommand) -> Result<(), Error> {
         if let Err(e) = self
-            .send_msg(Message::Text(cmd.wrapped_request.clone()))
+            .send_msg(Message::Text(cmd.wrapped_request.clone().into()))
             .await
         {
             cmd.response_tx.send(Err(e.clone()))?;
@@ -857,7 +857,7 @@ impl WebSocketClientDriver {
         R: Request,
     {
         self.send_msg(Message::Text(
-            serde_json::to_string_pretty(&wrapper).unwrap(),
+            serde_json::to_string_pretty(&wrapper).unwrap().into(),
         ))
         .await
     }
@@ -913,7 +913,7 @@ impl WebSocketClientDriver {
 
     async fn handle_incoming_msg(&mut self, msg: Message) -> Result<(), Error> {
         match msg {
-            Message::Text(s) => self.handle_text_msg(s).await,
+            Message::Text(s) => self.handle_text_msg(s.to_string()).await,
             Message::Ping(v) => self.pong(v).await,
             _ => Ok(()),
         }
@@ -1020,18 +1020,18 @@ impl WebSocketClientDriver {
         }
     }
 
-    async fn pong(&mut self, v: Vec<u8>) -> Result<(), Error> {
-        self.send_msg(Message::Pong(v)).await
+    async fn pong(&mut self, v: impl Into<bytes::Bytes>) -> Result<(), Error> {
+        self.send_msg(Message::Pong(v.into())).await
     }
 
     async fn ping(&mut self) -> Result<(), Error> {
-        self.send_msg(Message::Ping(Vec::new())).await
+        self.send_msg(Message::Ping(bytes::Bytes::new())).await
     }
 
     async fn close(mut self) -> Result<(), Error> {
         self.send_msg(Message::Close(Some(CloseFrame {
             code: CloseCode::Normal,
-            reason: Cow::from("client closed WebSocket connection"),
+            reason: "client closed WebSocket connection".into(),
         })))
         .await?;
 
@@ -1276,7 +1276,7 @@ mod test {
 
         async fn handle_incoming_msg(&mut self, msg: Message) -> Option<Result<(), Error>> {
             match msg {
-                Message::Text(s) => self.handle_incoming_text_msg(s).await,
+                Message::Text(s) => self.handle_incoming_text_msg(s.to_string()).await,
                 Message::Ping(v) => {
                     let _ = self.conn.send(Message::Pong(v)).await;
                     None
@@ -1353,7 +1353,8 @@ mod test {
             self.conn
                 .send(Message::Text(
                     serde_json::to_string(&response::Wrapper::new_with_id(id, Some(res), None))
-                        .unwrap(),
+                        .unwrap()
+                        .into(),
                 ))
                 .await
                 .unwrap();

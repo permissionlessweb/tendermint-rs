@@ -45,7 +45,7 @@ tendermint-testgen = { path = "testgen" }
 # External dependencies
 aead                   = { version = "0.5", default-features = false }
 async-trait            = { version = "0.1", default-features = false }
-async-tungstenite      = { version = "0.24", default-features = false, features = ["tokio-runtime", "tokio-rustls-native-certs"] }
+async-tungstenite      = { version = "0.29", default-features = false, features = ["tokio-runtime", "tokio-rustls-native-certs"] }
 borsh                  = { version = "1", default-features = false, features = ["derive"] }
 bytes                  = { version = "1.0", default-features = false }
 chacha20poly1305       = { version = "0.10", default-features = false, features = ["reduced-round"] }
@@ -84,7 +84,7 @@ rand                   = { version = "0.8", default-features = false }
 rand_core              = { version = "0.6", default-features = false, features = ["std"] }
 readwrite              = { version = "0.2.0", default-features = false }
 regex                  = "1.7.3"
-reqwest                = { version = "0.11.20", default-features = false, features = ["rustls-tls-native-roots"] }
+reqwest                = { version = "0.12", default-features = false, features = ["rustls-tls-native-roots"] }
 ripemd                 = { version = "0.1.3", default-features = false }
 scale-info             = { version = "2.1.2", default-features = false, features = ["derive"] }
 schemars               = "0.8.22"
@@ -92,7 +92,7 @@ semver                 = { version = "1.0", default-features = false }
 serde                  = { version = "1", default-features = false, features = ["derive"] }
 serde-wasm-bindgen     = { version = "0.6.5", default-features = false }
 serde_bytes            = { version = "0.11", default-features = false }
-serde_cbor             = { version = "0.11.1", default-features = false, features = ["alloc", "std"] }
+ciborium               = { version = "0.2", features = ["std"] }
 serde_derive           = { version = "1", default-features = false }
 serde_json             = { version = "1", default-features = false }
 sha2                   = { version = "0.10", default-features = false }

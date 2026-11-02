@@ -26,6 +26,16 @@ impl<V> HeightIndexedDb<V> {
     }
 }
 
+fn cbor_from_slice<T: DeserializeOwned>(bytes: &[u8]) -> Result<T, crate::errors::CborError> {
+    ciborium::de::from_reader(bytes).map_err(crate::errors::CborError::new)
+}
+
+fn cbor_to_vec<T: Serialize>(value: &T) -> Result<Vec<u8>, crate::errors::CborError> {
+    let mut buf = Vec::new();
+    ciborium::ser::into_writer(value, &mut buf).map_err(crate::errors::CborError::new)?;
+    Ok(buf)
+}
+
 fn key_bytes(height: Height) -> [u8; 8] {
     // we need to store the height in big-endian form for
     // sled's iterators and ordered operations to work properly.
@@ -53,7 +63,7 @@ where
 
         match value {
             Some(bytes) => {
-                let value = serde_cbor::from_slice(&bytes).map_err(Error::serde_cbor)?;
+                let value = cbor_from_slice(&bytes).map_err(Error::serde_cbor)?;
                 Ok(value)
             },
             None => Ok(None),
@@ -72,7 +82,7 @@ where
     /// Insert a value associated with a height within this tree
     pub fn insert(&self, height: Height, value: &V) -> Result<(), Error> {
         let key = key_bytes(height);
-        let bytes = serde_cbor::to_vec(&value).map_err(Error::serde_cbor)?;
+        let bytes = cbor_to_vec(&value).map_err(Error::serde_cbor)?;
 
         self.tree.insert(key, bytes).map_err(Error::sled)?;
 
@@ -93,7 +103,7 @@ where
         self.tree
             .iter()
             .flatten()
-            .flat_map(|(_, v)| serde_cbor::from_slice(&v))
+            .flat_map(|(_, v)| cbor_from_slice(&v))
     }
 
     /// Return an iterator over the given range
@@ -106,7 +116,7 @@ where
         self.tree
             .range(range)
             .flatten()
-            .flat_map(|(_, v)| serde_cbor::from_slice(&v))
+            .flat_map(|(_, v)| cbor_from_slice(&v))
     }
 }
 

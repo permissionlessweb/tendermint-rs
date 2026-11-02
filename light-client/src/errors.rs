@@ -23,6 +23,30 @@ type SledError = TraceError<sled::Error>;
 #[cfg(not(feature = "sled"))]
 type SledError = flex_error::NoSource;
 
+/// CBOR failure from the sled light store. `ciborium` replaced unmaintained `serde_cbor`.
+#[derive(Debug)]
+pub struct CborError {
+    inner: String,
+}
+
+impl core::fmt::Display for CborError {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        f.write_str(&self.inner)
+    }
+}
+
+impl std::error::Error for CborError {}
+
+impl CborError {
+    // Only the sled store encodes CBOR.
+    #[cfg_attr(not(feature = "sled"), allow(dead_code))]
+    pub(crate) fn new(err: impl core::fmt::Display) -> Self {
+        Self {
+            inner: err.to_string(),
+        }
+    }
+}
+
 define_error! {
     #[derive(Debug)]
     Error {
@@ -124,7 +148,7 @@ define_error! {
             | _ | { "sled error" },
 
         SerdeCbor
-            [ TraceError<serde_cbor::Error> ]
+            [ TraceError<CborError> ]
             | _ | { "serde cbor error" },
 
     }

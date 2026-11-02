@@ -32,7 +32,6 @@ crossbeam-channel = { workspace = true }
 derive_more = { workspace = true }
 futures = { workspace = true }
 serde = { workspace = true }
-serde_cbor = { workspace = true }
 serde_derive = { workspace = true }
 sled = { workspace = true, optional = true }
 static_assertions = { workspace = true }
