@@ -68,7 +68,7 @@ gumdrop                = { version = "0.8.0", default-features = false }
 hkdf                   = { version = "0.12.3", default-features = false }
 http                   = { version = "1", default-features = false, features = ["std"] }
 js-sys                 = { version = "=0.3.70", default-features = false }
-k256                   = { version = "0.13", default-features = false }
+k256                   = { version = "0.14", default-features = false }
 lazy_static            = { version = "1.4.0", default-features = false }
 merlin                 = { version = "3", default-features = false }
 num-traits             = { version = "0.2", default-features = false }
